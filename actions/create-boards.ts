@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export type state = {
+export type State = {
   errors?: {
     title?: string[];
   };
@@ -19,7 +19,7 @@ const CreateBoard = z.object({
   }),
 });
 
-export async function create(prevState: state, formData: FormData) {
+export async function createBoard(prevState: State, formData: FormData) {
   const validateFields = CreateBoard.safeParse({
     title: formData.get("title"),
   });
